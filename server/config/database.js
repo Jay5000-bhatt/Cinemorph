@@ -3,7 +3,7 @@ require("dotenv").config();
 
 const url = `mongodb+srv://Jay_Bhatt2201:R6BZ5BkOH5qz1rMl@server.tratjqt.mongodb.net/`;
 
-const dbName = "Netflix";
+const dbName = "Cinemorph";
 
 const connect = mongoose.connect(url + dbName, {
   useNewUrlParser: true,
