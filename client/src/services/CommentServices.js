@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5000/discuss";
+const BASE_URL = "https://cinemorph-api.vercel.app/discuss";
 
 const api = axios.create({
   baseURL: BASE_URL,
