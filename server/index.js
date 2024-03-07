@@ -3,7 +3,13 @@ const cors = require("cors");
 const app = express();
 const port = 5000;
 
-app.use(cors());
+app.use(cors(
+  {
+    origin: ["https://cinemorph-api.vercel.app/"],
+    methods: ["POST", "GET"],
+    credentials: true
+  }
+));
 app.use(express.json()); // for parsing application/json
 
 // Database Connection Start
@@ -36,7 +42,7 @@ app.use("/uploads", express.static(__dirname + "/uploads"));
 //Routes End
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.json("Hello World!");
 });
 
 app.listen(port, () => {
