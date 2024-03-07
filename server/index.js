@@ -5,7 +5,7 @@ const port = 5000;
 
 app.use(cors(
   {
-    origin: ["https://cinemorph-api.vercel.app/"],
+    origin: ["https://cinemorph.vercel.app"],
     methods: ["POST", "GET"],
     credentials: true
   }
