@@ -1,0 +1,124 @@
+body {
+  background-color: black;
+}
+
+.separation {
+  height: 7px;
+  background-color: rgb(46, 44, 44);
+  position: relative;
+  z-index: 20;
+}
+
+.separation1 {
+  margin-top: 20px;
+  height: 7px;
+  background-color: rgb(46, 44, 44);
+  position: relative;
+  z-index: 20;
+}
+
+.first {
+  display: flex;
+  justify-content: center;
+  max-width: 70vw;
+  margin: auto;
+  color: white;
+  justify-content: center;
+  align-items: center;
+}
+
+.secImg {
+  position: relative;
+}
+
+.secImg img {
+  width: 555px;
+  position: relative;
+  z-index: 10;
+}
+
+.secImg video {
+  z-index: -1;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  max-width: 73%;
+  max-height: 54%;
+  position: absolute;
+  top: 20%;
+  left: 13%;
+}
+
+.secImg2 video {
+  z-index: -1;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  max-width: 63%;
+  max-height: 47%;
+  position: absolute;
+  top: 9%;
+  left: 18%;
+}
+
+section.first>div {
+  display: flex;
+  flex-direction: column;
+  padding: 34px 0;
+}
+
+section.first>div :nth-child(1) {
+  font-size: 48px;
+  font-weight: bolder;
+  margin-bottom: 20px;
+}
+
+section.first>div :nth-child(2) {
+  font-size: 20px;
+  line-height: 30px;
+}
+
+@media screen and (max-width: 1300px) {
+  .first {
+    flex-wrap: wrap;
+  }
+
+  .secImg img {
+    width: 305px;
+  }
+
+  .secImg video {
+    width: 305px;
+  }
+}
+
+@media only screen and (max-width: 430px){
+  section.first>div{
+    padding: 40px 0 0;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  section.first>div :nth-child(1){
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    line-height: 26px;
+    letter-spacing: 0.5px;
+  }
+
+  section.first>div :nth-child(2) {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 30px;
+    margin-bottom: 30px;
+  }
+
+  .secImg video{
+    top: 26%;
+  }
+
+  .secImg2 video{
+    top: 16%;
+  }
+}

@@ -1,0 +1,176 @@
+.container .star-widget {
+  /* height: 20vh; */
+  display: flex;
+}
+
+.container .star-widget form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  margin-top: 30px;
+}
+
+.container form .textarea {
+  height: 150px;
+  width: 900px;
+}
+
+.container form .textarea textarea {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  color: #eee;
+  border: 2px solid #3e98c7;
+  background: transparent;
+  border-radius: 10px;
+  padding: 25px;
+  font-size: 30px;
+  resize: none;
+}
+
+.container form .btn10 {
+  width: 250px;
+  height: 85px;
+}
+
+.container form .btn10 button {
+  height: 100%;
+  width: 100%;
+  border: 1px solid rgba(108, 108, 108, 0.6196078431);
+  outline: none;
+  border-radius: 10px;
+  padding: 0;
+  margin: 0;
+  background: #3e98c7;
+  color: #ffffff;
+  font-size: xx-large;
+  font-weight: bolder;
+  letter-spacing: 3.5px;
+  line-height: 1;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.container .comments .card__details p {
+  font-size: 26px;
+  color: black;
+  margin-top: 1rem;
+  padding: 15px;
+}
+
+.replycmt {
+  font-size: 11px;
+}
+
+.rplybtn {
+  /* position: relative;
+  top: -30%;
+  left: 120%; */
+  width: 140px;
+  height: 40px;
+  border: 1px solid rgba(108, 108, 108, 0.6196078431);
+  outline: none;
+  border-radius: 10px;
+  padding: 0;
+  margin: 0;
+  background: #3e98c7;
+  color: #ffffff;
+  font-size: large;
+  font-weight: bolder;
+  letter-spacing: 2.5px;
+  line-height: 1;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 15px;
+}
+
+
+.container .comments h4 {
+  color: #3e98c7;
+  font-size: xxx-large;
+}
+
+.container .comments {
+  display: flex;
+  gap: 3rem;
+  flex-direction: column;
+  width: 80vw;
+}
+
+.container .comments .card__details strong {
+  text-align: -webkit-center;
+  color: #3e98c7;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.container .comments .card img {
+  max-width: 60px;
+  border-radius: 100%;
+  position: relative;
+}
+
+.container .comments .card {
+  padding: 2rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 5px 5px 20px rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+.textarea2 {
+  display: flex;
+  width: 500px;
+  height: 100px;
+  justify-content: space-between;
+  gap: 15px;
+  align-items: center;
+  color: black;
+}
+
+.textarea2 textarea {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  color: black;
+  border: 2px solid #3e98c7;
+  background: transparent;
+  border-radius: 10px;
+  padding: 25px;
+  font-size: 30px;
+  resize: none;
+}
+
+.container .comments h2 {
+  color: #ffffff;
+  font-size: xx-large;
+  letter-spacing: 0.5px;
+  line-height: 1;
+  margin: 50px 15px 15px 15px;
+}
+
+.textarea2 button {
+  width: 150px;
+  height: 50px;
+  border: 1px solid rgba(108, 108, 108, 0.6196078431);
+  outline: none;
+  border-radius: 10px;
+  padding: 0;
+  margin: 0;
+  background: #3e98c7;
+  color: #ffffff;
+  font-size: large;
+  font-weight: bolder;
+  letter-spacing: 2.5px;
+  line-height: 1;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 15px;
+}
