@@ -32,7 +32,6 @@ const commentController = {
     }
   },
   
-
   getAllCommentsForPost: async (req, res) => {
     try {
       const postId = req.params.postId;
