@@ -51,7 +51,7 @@ const RatingForm = () => {
       const contentId = path.substring(path.lastIndexOf("/") + 1);
 
       // Create a new rating document in the database
-      const response = await axios.post("https://cinemorph-api.vercel.app/api/ratings", {
+      const response = await axios.post("https://cinemorph-92jqg3wgb-jay-bhatts-projects.vercel.app/api/ratings", {
         contentId,
         userId: userName,
         rating,
@@ -73,7 +73,7 @@ const RatingForm = () => {
     try {
       const tmdbId = window.location.pathname.split("/").pop();
       const response = await axios.get(
-        `https://cinemorph-api.vercel.app/api/ratings/posts/${tmdbId}/comments`
+        `https://cinemorph-92jqg3wgb-jay-bhatts-projects.vercel.app/api/ratings/posts/${tmdbId}/comments`
       );
 
       setComments(response.data);
