@@ -1,103 +1,103 @@
 const User = require("../models/Users");
-// const bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const saltRounds = 10;
 const secret = "mysecret";
 
 const { generateMail, failureResponse, successResponse } = require("./utils");
 
-// const signUp = async (req, res) => {
-//   try {
-//     const { email, password, role, profileInformation, address, payment } =
-//       req.body;
-//     const hashPassword = await bcrypt.hash(password, saltRounds);
-//     const user = new User({
-//       email,
-//       password: hashPassword,
-//       role,
-//       profileInformation,
-//       address,
-//       payment,
-//     });
-//     const newUser = await user.save();
-//     successResponse(res, "User Created Successfully", 201);
-//   } catch (error) {
-//     failureResponse(res, error);
-//   }
-// };
+const signUp = async (req, res) => {
+  try {
+    const { email, password, role, profileInformation, address, payment } =
+      req.body;
+    const hashPassword = await bcrypt.hash(password, saltRounds);
+    const user = new User({
+      email,
+      password: hashPassword,
+      role,
+      profileInformation,
+      address,
+      payment,
+    });
+    const newUser = await user.save();
+    successResponse(res, "User Created Successfully", 201);
+  } catch (error) {
+    failureResponse(res, error);
+  }
+};
 
-// const login = async (req, res) => {
-//   try {
-//     const { email, password } = req.body;
-//     if (!email || !password) {
-//       failureResponse(res, "Please provide email and password", 400);
-//     } else {
-//       const user = await User.findOne({ email });
-//       if (user) {
-//         const passwordMatch = await bcrypt.compare(password, user.password);
-//         if (passwordMatch) {
-//           // create token
-//           const token = jwt.sign(
-//             { id: user._id, email: user.email, role: user.role },
-//             secret,
-//             { expiresIn: "1h" }
-//           );
-//           // res.send({ message: "Login Successful", token });
-//           // res.json({ token, username: user.username });
-//           successResponse(res, { message: "Login Successful", token, email: user.email });
-//         }
-//         // if password does not match
-//         else {
-//           // return res.status(400).json({ message: "Password is incorrect" });
-//           failureResponse(res, "Password is incorrect", 400);
-//         }
-//       }
-//       // if email doesn't exist in Database
-//       else {
-//         // return res.status(400).json({ message: "User not found" });
-//         failureResponse(res, "User not found", 400);
-//       }
-//     }
-//   } catch (error) {
-//     failureResponse(res, error);
-//   }
-// };
+const login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    if (!email || !password) {
+      failureResponse(res, "Please provide email and password", 400);
+    } else {
+      const user = await User.findOne({ email });
+      if (user) {
+        const passwordMatch = await bcrypt.compare(password, user.password);
+        if (passwordMatch) {
+          // create token
+          const token = jwt.sign(
+            { id: user._id, email: user.email, role: user.role },
+            secret,
+            { expiresIn: "1h" }
+          );
+          // res.send({ message: "Login Successful", token });
+          // res.json({ token, username: user.username });
+          successResponse(res, { message: "Login Successful", token, email: user.email });
+        }
+        // if password does not match
+        else {
+          // return res.status(400).json({ message: "Password is incorrect" });
+          failureResponse(res, "Password is incorrect", 400);
+        }
+      }
+      // if email doesn't exist in Database
+      else {
+        // return res.status(400).json({ message: "User not found" });
+        failureResponse(res, "User not found", 400);
+      }
+    }
+  } catch (error) {
+    failureResponse(res, error);
+  }
+};
 
-// const changePassword = async (req, res) => {
-//   try {
-//     const { email, password, newPassword } = req.body;
-//     // const email = req.user.email;
+const changePassword = async (req, res) => {
+  try {
+    const { email, password, newPassword } = req.body;
+    // const email = req.user.email;
 
-//     // Find user by email
-//     let user = await User.findOne({ email });
+    // Find user by email
+    let user = await User.findOne({ email });
 
-//     if (!user) {
-//       return res.status(400).json({ message: "User not found" });
-//     }
+    if (!user) {
+      return res.status(400).json({ message: "User not found" });
+    }
 
-//     // Compare old password with password in the database
-//     const passwordMatch = await bcrypt.compare(password, user.password);
+    // Compare old password with password in the database
+    const passwordMatch = await bcrypt.compare(password, user.password);
 
-//     if (!passwordMatch) {
-//       return res.status(400).json({ message: "Password is incorrect" });
-//     }
+    if (!passwordMatch) {
+      return res.status(400).json({ message: "Password is incorrect" });
+    }
 
-//     // If password matches, make a hash of the new password
-//     const hashedPassword = await bcrypt.hash(newPassword, saltRounds);
+    // If password matches, make a hash of the new password
+    const hashedPassword = await bcrypt.hash(newPassword, saltRounds);
 
-//     // Update password in the database
-//     const updatedUser = await User.findOneAndUpdate(
-//       { email },
-//       { password: hashedPassword },
-//       { new: true } // This option ensures that the updated document is returned
-//     );
+    // Update password in the database
+    const updatedUser = await User.findOneAndUpdate(
+      { email },
+      { password: hashedPassword },
+      { new: true } // This option ensures that the updated document is returned
+    );
 
-//     return res.status(201).json({ message: "Password changed successfully" });
-//   } catch (error) {
-//     console.error("Error in changePassword:", error);
-//     return res.status(500).json({ error: "Internal Server Error" });
-//   }
-// };
+    return res.status(201).json({ message: "Password changed successfully" });
+  } catch (error) {
+    console.error("Error in changePassword:", error);
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
+};
 
 // 1. API to create OTP
 const generateOtp = async (req, res) => {
@@ -135,40 +135,40 @@ const generateOtp = async (req, res) => {
   }
 };
 
-// // 2. API to verify OTP
-// const verifyOtp = async (req, res) => {
-//   try {
-//     const { email, otp, password } = req.body;
-//     // find user by email
-//     let user = await User.findOne({ email });
-//     if (user) {
-//       if (user.token == otp) {
-//         // check if token_expiry + 10 mins is greater than current time
-//         const currentTime = Date.now();
-//         const expiryTime = user.token_expiry + 10 * 60 * 1000;
-//         if (currentTime > expiryTime) {
-//           return res.status(400).json({ message: "OTP is expired" });
-//         } else {
-//           const hashPassword = await bcrypt.hash(password, saltRounds);
-//           // update password in database
-//           await User.findOneAndUpdate(
-//             { email },
-//             { password: hashPassword, token: null, token_expiry: null }
-//           );
-//           return res
-//             .status(201)
-//             .json({ message: "Password changed successfully" });
-//         }
-//       } else {
-//         return res.status(400).json({ message: "OTP is incorrect" });
-//       }
-//     } else {
-//       return res.status(400).json({ message: "User not found" });
-//     }
-//   } catch (error) {
-//     return res.status(500).json({ error: error });
-//   }
-// };
+// 2. API to verify OTP
+const verifyOtp = async (req, res) => {
+  try {
+    const { email, otp, password } = req.body;
+    // find user by email
+    let user = await User.findOne({ email });
+    if (user) {
+      if (user.token == otp) {
+        // check if token_expiry + 10 mins is greater than current time
+        const currentTime = Date.now();
+        const expiryTime = user.token_expiry + 10 * 60 * 1000;
+        if (currentTime > expiryTime) {
+          return res.status(400).json({ message: "OTP is expired" });
+        } else {
+          const hashPassword = await bcrypt.hash(password, saltRounds);
+          // update password in database
+          await User.findOneAndUpdate(
+            { email },
+            { password: hashPassword, token: null, token_expiry: null }
+          );
+          return res
+            .status(201)
+            .json({ message: "Password changed successfully" });
+        }
+      } else {
+        return res.status(400).json({ message: "OTP is incorrect" });
+      }
+    } else {
+      return res.status(400).json({ message: "User not found" });
+    }
+  } catch (error) {
+    return res.status(500).json({ error: error });
+  }
+};
 
 const updateProfile = async (req, res) => {
   try {
@@ -231,11 +231,11 @@ const createPayment = async (req, res) => {
 };
 
 module.exports = {
-  // signUp,
-  // login,
-  // changePassword,
+  signUp,
+  login,
+  changePassword,
   generateOtp,
-  // verifyOtp,
+  verifyOtp,
   updateProfile,
   createPayment,
 };

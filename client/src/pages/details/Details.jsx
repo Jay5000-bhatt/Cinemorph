@@ -8,7 +8,7 @@ import useFetch from "../../hooks/userFetch";
 import DetailsBanner from "./detailsBanner/DetailsBanner";
 import Cast from "./cast/Cast";
 import VideosSection from "./videosSection/VideosSection";
-import RatingSection from "./rating/RatingForm";
+// import RatingSection from "./rating/RatingForm";
 import Similar from "./carousels/Similar";
 import Recommendation from "./carousels/Recommendation";
 import ToasterNotification from "../../components/ToasterNotification/ToastNotification"
@@ -29,7 +29,7 @@ const Details = () => {
       <VideosSection data={data} loading={loading} />
       <Similar mediaType={mediaType} id={id} />
       <Recommendation mediaType={mediaType} id={id} />
-      <RatingSection mediaType={mediaType} id={id}/>
+      {/* <RatingSection mediaType={mediaType} id={id}/> */}
       <Footer />
     </div>
   );

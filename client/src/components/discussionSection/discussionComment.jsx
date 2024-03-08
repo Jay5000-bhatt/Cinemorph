@@ -9,7 +9,6 @@ import { useSelector } from "react-redux";
 import { getDatabase, ref, child, get } from "firebase/database";
 import { firebaseAuth } from "../../utils/firebase-config.js";
 import { PlayIcon } from "../../pages/details/Playbtn.jsx";
-
 import avtarimg from "../../assets/UserImg-logo.png";
 import PosterFallback from "../../assets/no-poster.png";
 import CircleRating from "../circleRating/CircleRating.jsx";
@@ -33,6 +32,7 @@ const DiscussionComment = ({ video, crew }) => {
   const { url } = useSelector((state) => state.home);
 
   const _genres = data?.genres?.map((g) => g.id);
+  
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -67,7 +67,7 @@ const DiscussionComment = ({ video, crew }) => {
       const tmdbId = segments[segments.length - 2];
 
       const response = await axios.post(
-        "https://cinemorph-api.vercel.app/discuss/comments",
+        "http://localhost:5000/discuss/comments",
         {
           tmdbId,
           userId: userName,
@@ -93,7 +93,7 @@ const DiscussionComment = ({ video, crew }) => {
       const segments = path.split("/");
       const tmdbId = segments[segments.length - 2];
       const response = await axios.get(
-        `https://cinemorph-api.vercel.app/discuss/posts/${tmdbId}/comments`
+        `http://localhost:5000/discuss/posts/${tmdbId}/comments`
       );
 
       setComments(response.data);
@@ -112,7 +112,7 @@ const DiscussionComment = ({ video, crew }) => {
       const segments = path.split("/");
       const tmdbId = segments[segments.length - 2];
       const response = await axios.post(
-        "https://cinemorph-api.vercel.app/discuss/comments/reply",
+        "http://localhost:5000/discuss/comments/reply",
         {
           tmdbId,
           userId: userName,
@@ -204,7 +204,6 @@ const DiscussionComment = ({ video, crew }) => {
                 <div className="backdrop-img">
                   <Img src={url.backdrop + data.backdrop_path} />
                 </div>
-                <div className="opacity-layer"></div>
                 <ContentWrapper>
                   <div className="content">
                     <div className="left">
@@ -316,7 +315,6 @@ const DiscussionComment = ({ video, crew }) => {
             </div>
           </form>
         </div>
-        <div className="separation"></div>
         <div className="comments">
           <h2>Discussion</h2>
           {renderComments()}

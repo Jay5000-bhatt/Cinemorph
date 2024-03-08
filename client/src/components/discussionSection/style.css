@@ -1,6 +1,9 @@
 .container .star-widget {
-  /* height: 20vh; */
+  height: 20vh;
+  margin: 40px;
   display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .container .star-widget form {
@@ -97,7 +100,8 @@
   display: flex;
   gap: 3rem;
   flex-direction: column;
-  width: 80vw;
+  width: 100vw;
+  align-items: center;
 }
 
 .container .comments .card__details strong {
@@ -115,6 +119,7 @@
 
 .container .comments .card {
   padding: 2rem;
+  width: 75%;
   display: flex;
   align-items: flex-start;
   gap: 2rem;
@@ -149,7 +154,7 @@
 
 .container .comments h2 {
   color: #ffffff;
-  font-size: xx-large;
+  font-size: 50px;
   letter-spacing: 0.5px;
   line-height: 1;
   margin: 50px 15px 15px 15px;
@@ -173,4 +178,187 @@
   cursor: pointer;
   transition: all 0.3s ease;
   margin: 15px;
+}
+
+
+@media only screen and (max-width: 430px){
+  .header{
+    position: absolute;
+  }
+
+  .container{
+    width: 100%;
+    height: 100%;
+    margin: 50px 20px;
+  }
+
+  .container .star-widget {
+    width: 100%;
+    
+  }
+
+  .container .star-widget form{
+    display: block;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin-top: 30px;
+  }
+
+  .container form .textarea {
+    height: 85px;
+    width: 350px;
+  }
+
+  .container form .textarea textarea{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    color: #eee;
+    border: 2px solid #3e98c7;
+    background: transparent;
+    border-radius: 10px;
+    padding: 25px;
+    font-size: 14px;
+    resize: none;
+  }
+
+  .container form .btn10{
+    position: relative;
+    width: 250px;
+    height: 70px;
+    top: 15px;
+
+  }
+  .container form .btn10 button{
+    height: 50%;
+    width: 50%;
+    border: 1px solid rgba(108, 108, 108, 0.6196078431);
+    outline: none;
+    border-radius: 10px;
+    padding: 0;
+    margin: 0;
+    background: #3e98c7;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bolder;
+    letter-spacing: 3.5px;
+    line-height: 1;
+    text-transform: capitalize;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .card__details{
+    margin-top: 7px;
+    margin-left: -15px;
+  }
+
+  .container .comments .card img {
+    max-width: 35px;
+    border-radius: 100%;
+    position: relative;
+  }
+
+  .container .comments .card {
+    padding: 1rem;
+    margin-top: 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow:5px 5px 20px rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+  }
+
+  .rplybtn{
+    width: 60px;
+    height: 20px;
+    border: 1px solid rgba(108, 108, 108, 0.6196078431);
+    outline: none;
+    border-radius: 10px;
+    padding: 0;
+    background: #3e98c7;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: bolder;
+    letter-spacing: 0.5px;
+    line-height: 1;
+    text-transform: all 0.3s ease;
+    margin: 15px;
+  }
+
+  .container .comments{
+    display: block;
+    width: 90vw;
+  }
+
+  .container .comments h2{
+    color: #ffffff;
+    font-size: xx-large;
+    letter-spacing: 0.5px;
+    line-height: 1;
+    margin: 30px 15px;
+  }
+
+  .textarea2 button {
+    width: 100px;
+    height: 35px;
+    border: 1px solid rgba(108, 108, 108, 0.6196078431);
+    outline: none;
+    border-radius: 10px;
+    padding: 0;
+    margin: 0;
+    background: #3e98c7;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bolder;
+    letter-spacing: 1.5px;
+    line-height: 1;
+    text-transform: capitalize;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 15px;
+}
+.textarea2 {
+  display: flex;
+  width: 290px;
+  height: 60px;
+  justify-content: space-between;
+  gap: 0;
+  align-items: center;
+  color: black;
+}
+
+.container .comments .card__details strong {
+  text-align: -webkit-center;
+  color: #3e98c7;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.container .comments .card__details p {
+  font-size: 20px;
+  color: black;
+  margin-top: 0;
+  padding: 10px;
+}
+
+.textarea2 textarea {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  color: black;
+  border: 2px solid #3e98c7;
+  background: transparent;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 15px;
+  resize: none;
+}
+
+
+  
+
 }
