@@ -67,7 +67,7 @@ const DiscussionComment = ({ video, crew }) => {
       const tmdbId = segments[segments.length - 2];
 
       const response = await axios.post(
-        "https://cinemorph-api-git-master-jay-bhatts-projects.vercel.app/discuss/comments",
+        "https://cinemorph-92jqg3wgb-jay-bhatts-projects.vercel.app/discuss/comments",
         {
           tmdbId,
           userId: userName,
@@ -93,7 +93,7 @@ const DiscussionComment = ({ video, crew }) => {
       const segments = path.split("/");
       const tmdbId = segments[segments.length - 2];
       const response = await axios.get(
-        `https://cinemorph-api-git-master-jay-bhatts-projects.vercel.app/discuss/posts/${tmdbId}/comments`
+        `https://cinemorph-92jqg3wgb-jay-bhatts-projects.vercel.app/discuss/posts/${tmdbId}/comments`
       );
 
       setComments(response.data);
@@ -112,7 +112,7 @@ const DiscussionComment = ({ video, crew }) => {
       const segments = path.split("/");
       const tmdbId = segments[segments.length - 2];
       const response = await axios.post(
-        "https://cinemorph-api-git-master-jay-bhatts-projects.vercel.app/discuss/comments/reply",
+        "https://cinemorph-92jqg3wgb-jay-bhatts-projects.vercel.app/discuss/comments/reply",
         {
           tmdbId,
           userId: userName,
