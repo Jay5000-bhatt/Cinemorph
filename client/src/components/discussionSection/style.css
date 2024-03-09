@@ -61,6 +61,12 @@
   color: black;
   margin-top: 1rem;
   padding: 15px;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.card__details {
+  width: 750px;
 }
 
 .replycmt {
@@ -68,9 +74,6 @@
 }
 
 .rplybtn {
-  /* position: relative;
-  top: -30%;
-  left: 120%; */
   width: 140px;
   height: 40px;
   border: 1px solid rgba(108, 108, 108, 0.6196078431);
@@ -180,24 +183,29 @@
   margin: 15px;
 }
 
+p.replycmt {
+  word-wrap: break-word;
+  word-break: break-all;
+}
 
-@media only screen and (max-width: 430px){
-  .header{
+
+@media only screen and (max-width: 430px) {
+  .header {
     position: absolute;
   }
 
-  .container{
+  .container {
     width: 100%;
     height: 100%;
-    margin: 50px 20px;
   }
 
   .container .star-widget {
     width: 100%;
-    
+    margin: 0;
+
   }
 
-  .container .star-widget form{
+  .container .star-widget form {
     display: block;
     justify-content: center;
     align-items: center;
@@ -210,7 +218,7 @@
     width: 350px;
   }
 
-  .container form .textarea textarea{
+  .container form .textarea textarea {
     height: 100%;
     width: 100%;
     outline: none;
@@ -223,14 +231,15 @@
     resize: none;
   }
 
-  .container form .btn10{
+  .container form .btn10 {
     position: relative;
     width: 250px;
     height: 70px;
     top: 15px;
 
   }
-  .container form .btn10 button{
+
+  .container form .btn10 button {
     height: 50%;
     width: 50%;
     border: 1px solid rgba(108, 108, 108, 0.6196078431);
@@ -248,31 +257,38 @@
     cursor: pointer;
     transition: all 0.3s ease;
   }
-  
-  .card__details{
-    margin-top: 7px;
-    margin-left: -15px;
+
+  .card__details {
+    margin-top: 5px;
+    margin-left: 5px;
+    width: 190px;
   }
 
   .container .comments .card img {
-    max-width: 35px;
+    max-width: 25px;
     border-radius: 100%;
     position: relative;
   }
 
+  p.replycmt {
+    word-wrap: break-word;
+    word-break: break-all;
+  }
+
   .container .comments .card {
     padding: 1rem;
+    width: 85%;
     margin-top: 15px;
     display: flex;
     align-items: flex-start;
-    gap: 2rem;
+    gap: 0;
     background-color: #ffffff;
     border-radius: 20px;
-    box-shadow:5px 5px 20px rgba(255, 255, 255, 0.2);
+    box-shadow: 5px 5px 20px rgba(255, 255, 255, 0.2);
     cursor: pointer;
   }
 
-  .rplybtn{
+  .rplybtn {
     width: 60px;
     height: 20px;
     border: 1px solid rgba(108, 108, 108, 0.6196078431);
@@ -289,12 +305,15 @@
     margin: 15px;
   }
 
-  .container .comments{
-    display: block;
-    width: 90vw;
+  .container .comments {
+    margin-top: 20px;
+    align-items: center;
+    display: flex;
+    gap: 0;
+    width: 100vw;
   }
 
-  .container .comments h2{
+  .container .comments h2 {
     color: #ffffff;
     font-size: xx-large;
     letter-spacing: 0.5px;
@@ -320,45 +339,48 @@
     cursor: pointer;
     transition: all 0.3s ease;
     margin: 15px;
-}
-.textarea2 {
-  display: flex;
-  width: 290px;
-  height: 60px;
-  justify-content: space-between;
-  gap: 0;
-  align-items: center;
-  color: black;
-}
+  }
 
-.container .comments .card__details strong {
-  text-align: -webkit-center;
-  color: #3e98c7;
-  font-size: 20px;
-  font-weight: 800;
-}
+  .textarea2 {
+    display: flex;
+    width: 290px;
+    height: 60px;
+    justify-content: space-between;
+    gap: 0;
+    align-items: center;
+    color: black;
+  }
 
-.container .comments .card__details p {
-  font-size: 20px;
-  color: black;
-  margin-top: 0;
-  padding: 10px;
-}
+  .container .comments .card__details strong {
+    text-align: -webkit-center;
+    color: #3e98c7;
+    font-size: 14px;
+    font-weight: 800;
+  }
 
-.textarea2 textarea {
-  height: 100%;
-  width: 100%;
-  outline: none;
-  color: black;
-  border: 2px solid #3e98c7;
-  background: transparent;
-  border-radius: 10px;
-  padding: 10px;
-  font-size: 15px;
-  resize: none;
-}
+  .container .comments .card__details p {
+    font-size: 12px;
+    color: black;
+    margin-top: 0;
+    padding: 10px;
+    word-wrap: break-word;
+    word-break: break-all;
+  }
+
+  .textarea2 textarea {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    color: black;
+    border: 2px solid #3e98c7;
+    background: transparent;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 15px;
+    resize: none;
+  }
 
 
-  
+
 
 }
