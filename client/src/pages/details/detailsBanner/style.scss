@@ -116,6 +116,16 @@
         letter-spacing: 0.5px;
         font-weight: 400;
         transform-style: preserve-3d;
+        @media (max-width: 430px) {
+          font-size: 15px;
+        }
+        @media (max-width: 375px) {
+          font-size: 12px;
+        }
+        @media (max-width: 375px) {
+          font-size: 12px;
+        }
+
       }
       .playbtn {
         display: flex;

@@ -3,13 +3,7 @@ const cors = require("cors");
 const app = express();
 const port = 5000;
 
-app.use(cors(
-  {
-    origin: ["https://cinemorph-git-master-jay-bhatts-projects.vercel.app"],
-    methods: ["POST", "GET"],
-    credentials: true
-  }
-));
+app.use(cors());
 app.use(express.json()); // for parsing application/json
 
 // Database Connection Start
@@ -48,3 +42,10 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
+
+  // {
+  //   origin: ["https://cinemorph-git-master-jay-bhatts-projects.vercel.app"],
+  //   methods: ["POST", "GET"],
+  //   credentials: true
+  // }
