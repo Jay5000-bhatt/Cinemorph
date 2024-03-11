@@ -24,11 +24,16 @@
   }
   .videoPlayer {
     position: relative;
-    width: 800px;
+    width: 1200px;
+    height: 650px;
     aspect-ratio: 16 / 9;
     background-color: white;
     transform: scale(0.2);
     transition: transform 250ms;
+    @media(max-width: 430px){
+      width: 400px;
+      height: 250px;
+    }
     .closeBtn {
       position: absolute;
       top: -20px;
