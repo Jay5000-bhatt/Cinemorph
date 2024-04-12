@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
 
-.container {
+.containerdiv {
   position: relative;
   width: 100%;
   background: #111;
@@ -15,17 +15,17 @@
   .comments-section {
     color: white;
   }
-  .post {
+  .post1 {
     display: none;
   }
 
-  .text {
+  .text1 {
     font-size: 25px;
     color: #666;
     font-weight: 500;
   }
 
-  .edit {
+  .edit1 {
     position: absolute;
     right: 10px;
     top: 5px;
@@ -39,7 +39,7 @@
     }
   }
 
-  .star-widget {
+  .star-widget1 {
     input {
       display: none;
     }

@@ -11,14 +11,43 @@ const RatingForm = () => {
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
   const [userName, setUserName] = useState("Admin");
+  const [submitted, setSubmitted] = useState(false); // Add submitted state
+
+  // useEffect(() => {
+  //   const fetchUserName = async () => {
+  //     try {
+  //       const user = firebaseAuth.currentUser;
+
+  //       if (!user) {
+  //         console.log("User not found");
+  //         return;
+  //       }
+
+  //       const db = getDatabase();
+  //       const usersRef = ref(db, "users");
+  //       const userSnapshot = await get(child(usersRef, user.uid));
+
+  //       if (userSnapshot.exists()) {
+  //         const userData = userSnapshot.val();
+  //         const { Name } = userData;
+  //         console.log("Current user name:", Name);
+  //         setUserName(Name);
+  //       } else {
+  //         console.log("User data not found in database");
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching user data:", error);
+  //     }
+  //   };
+
+  //   fetchUserName();
+  // }, [firebaseAuth]);
 
   useEffect(() => {
-    const fetchUserName = async () => {
+    const fetchUserData = async () => {
       try {
         const user = firebaseAuth.currentUser;
-
         if (!user) {
-          console.log("User not found");
           return;
         }
 
@@ -29,17 +58,14 @@ const RatingForm = () => {
         if (userSnapshot.exists()) {
           const userData = userSnapshot.val();
           const { Name } = userData;
-          console.log("Current user name:", Name);
           setUserName(Name);
-        } else {
-          console.log("User data not found in database");
         }
       } catch (error) {
         console.error("Error fetching user data:", error);
       }
     };
 
-    fetchUserName();
+    fetchUserData();
   }, [firebaseAuth]);
 
   const handleSubmit = async (e) => {
@@ -51,7 +77,7 @@ const RatingForm = () => {
       const contentId = path.substring(path.lastIndexOf("/") + 1);
 
       // Create a new rating document in the database
-      const response = await axios.post("https://cinemorph-92jqg3wgb-jay-bhatts-projects.vercel.app/api/ratings", {
+      const response = await axios.post("http://localhost:5000/api/ratings", {
         contentId,
         userId: userName,
         rating,
@@ -59,6 +85,7 @@ const RatingForm = () => {
       });
       console.log("Rating submitted successfully", response.data);
       await fetchComments();
+      setSubmitted(true); // Set submitted to true after successful submission
     } catch (error) {
       console.error("Error submitting rating:", error);
     }
@@ -73,7 +100,7 @@ const RatingForm = () => {
     try {
       const tmdbId = window.location.pathname.split("/").pop();
       const response = await axios.get(
-        `https://cinemorph-92jqg3wgb-jay-bhatts-projects.vercel.app/api/ratings/posts/${tmdbId}/comments`
+        `http://localhost:5000/api/ratings/posts/${tmdbId}/comments`
       );
 
       setComments(response.data);
@@ -89,6 +116,14 @@ const RatingForm = () => {
   const handleCommentChange = (event) => {
     setComment(event.target.value);
   };
+   // Reset form fields if submission was successful
+   useEffect(() => {
+    if (submitted) {
+      setRating(0);
+      setComment("");
+      setSubmitted(false); // Reset submitted state
+    }
+  }, [submitted]);
 
   const renderComments = () => {
     if (comments.length === 0) {
@@ -112,14 +147,14 @@ const RatingForm = () => {
   };
 
   return (
-    <div className="container">
-      <div className="post">
-        <div className="text">Thanks for rating us!</div>
-        <div className="edit" onClick={() => setRating(0)}>
+    <div className="containerdiv">
+      <div className="post1">
+        <div className="text1">Thanks for rating us!</div>
+        <div className="edit1" onClick={() => setRating(0)}>
           EDIT
         </div>
       </div>
-      <div className="star-widget">
+      <div className="star-widget1">
         {[...Array(5)].map((_, index) => (
           <React.Fragment key={index}>
             <input
@@ -131,7 +166,7 @@ const RatingForm = () => {
             />
             <label
               htmlFor={`rate-${index + 1}`}
-              className="fas fa-star"
+              className="fas fa-star label"
             ></label>
           </React.Fragment>
         ))}

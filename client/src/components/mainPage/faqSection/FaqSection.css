@@ -75,6 +75,8 @@ input[type="radio"] {
 .accordion input[type='radio']:checked+.labelpuls+.content {
     max-height: 600px;
     padding: 30px 20px;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
 }
 
 .accordion input[type='radio']:not(:checked)+.labelpuls+.content {

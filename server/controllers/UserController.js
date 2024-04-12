@@ -20,6 +20,7 @@ const signUp = async (req, res) => {
       payment,
     });
     const newUser = await user.save();
+    
     successResponse(res, "User Created Successfully", 201);
   } catch (error) {
     failureResponse(res, error);
