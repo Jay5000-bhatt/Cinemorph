@@ -42,10 +42,3 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-
-
-  // {
-  //   origin: ["https://cinemorph-git-master-jay-bhatts-projects.vercel.app"],
-  //   methods: ["POST", "GET"],
-  //   credentials: true
-  // }

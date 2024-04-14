@@ -30,7 +30,6 @@ const getCommentsByContentId = async (req, res) => {
   }
 };
 
-
 module.exports = {
     addNewRating,
     getCommentsByContentId,

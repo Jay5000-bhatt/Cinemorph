@@ -14,7 +14,7 @@ function generateMail(to, subject, body) {
 
     const mailOptions = {
       from: email,
-      to: "madhusudansinghmertiya@gmail.com",
+      to: "bhattjay404@gmail.com",
       subject : "Change Password",
       html: body,
     };
