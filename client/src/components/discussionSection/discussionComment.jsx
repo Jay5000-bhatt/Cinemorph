@@ -67,7 +67,7 @@ const DiscussionComment = ({ video, crew }) => {
       const tmdbId = segments[segments.length - 2];
 
       const response = await axios.post(
-        "http://localhost:5000/discuss/comments",
+        "https://cinemorph-api.vercel.app/discuss/comments",
         {
           tmdbId,
           userId: userName,
@@ -93,7 +93,7 @@ const DiscussionComment = ({ video, crew }) => {
       const segments = path.split("/");
       const tmdbId = segments[segments.length - 2];
       const response = await axios.get(
-        `http://localhost:5000/discuss/posts/${tmdbId}/comments`
+        `https://cinemorph-api.vercel.app/discuss/posts/${tmdbId}/comments`
       );
 
       setComments(response.data);
@@ -112,7 +112,7 @@ const DiscussionComment = ({ video, crew }) => {
       const segments = path.split("/");
       const tmdbId = segments[segments.length - 2];
       const response = await axios.post(
-        "http://localhost:5000/discuss/comments/reply",
+        "https://cinemorph-api.vercel.app/discuss/comments/reply",
         {
           tmdbId,
           userId: userName,
