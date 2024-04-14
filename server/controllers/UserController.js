@@ -1,5 +1,5 @@
 const User = require("../models/Users");
-const bcrypt = require("bcrypt");
+// const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const saltRounds = 10;
 const secret = "mysecret";
@@ -10,10 +10,10 @@ const signUp = async (req, res) => {
   try {
     const { email, password, role, profileInformation, address, payment } =
       req.body;
-    const hashPassword = await bcrypt.hash(password, saltRounds);
+    // const hashPassword = await bcrypt.hash(password, saltRounds);
     const user = new User({
       email,
-      password: hashPassword,
+      password: password,
       role,
       profileInformation,
       address,
@@ -32,33 +32,29 @@ const login = async (req, res) => {
     const { email, password } = req.body;
     if (!email || !password) {
       failureResponse(res, "Please provide email and password", 400);
-    } else {
-      const user = await User.findOne({ email });
-      if (user) {
-        const passwordMatch = await bcrypt.compare(password, user.password);
-        if (passwordMatch) {
-          // create token
-          const token = jwt.sign(
-            { id: user._id, email: user.email, role: user.role },
-            secret,
-            { expiresIn: "1h" }
-          );
-          // res.send({ message: "Login Successful", token });
-          // res.json({ token, username: user.username });
-          successResponse(res, { message: "Login Successful", token, email: user.email });
-        }
-        // if password does not match
-        else {
-          // return res.status(400).json({ message: "Password is incorrect" });
-          failureResponse(res, "Password is incorrect", 400);
-        }
-      }
-      // if email doesn't exist in Database
-      else {
-        // return res.status(400).json({ message: "User not found" });
-        failureResponse(res, "User not found", 400);
-      }
+      return;
     }
+    
+    const user = await User.findOne({ email });
+    if (!user) {
+      failureResponse(res, "User not found", 400);
+      return;
+    }
+
+    // Check password using your preferred method (e.g., hashing and comparing)
+    if (password !== user.password) {
+      failureResponse(res, "Password is incorrect", 400);
+      return;
+    }
+
+    // Create a JWT token
+    const token = jwt.sign(
+      { id: user._id, email: user.email, role: user.role },
+      secret,
+      { expiresIn: "1h" }
+    );
+
+    successResponse(res, { message: "Login Successful", token, email: user.email });
   } catch (error) {
     failureResponse(res, error);
   }
@@ -76,20 +72,26 @@ const changePassword = async (req, res) => {
       return res.status(400).json({ message: "User not found" });
     }
 
-    // Compare old password with password in the database
-    const passwordMatch = await bcrypt.compare(password, user.password);
+    // // Compare old password with password in the database
+    // const passwordMatch = await bcrypt.compare(password, user.password);
 
-    if (!passwordMatch) {
-      return res.status(400).json({ message: "Password is incorrect" });
+    // if (!passwordMatch) {
+    //   return res.status(400).json({ message: "Password is incorrect" });
+    // }
+
+    // Check password using your preferred method (e.g., hashing and comparing)
+    if (password !== user.password) {
+      failureResponse(res, "Password is incorrect", 400);
+      return;
     }
 
     // If password matches, make a hash of the new password
-    const hashedPassword = await bcrypt.hash(newPassword, saltRounds);
+    // const hashedPassword = await bcrypt.hash(newPassword, saltRounds);
 
     // Update password in the database
     const updatedUser = await User.findOneAndUpdate(
       { email },
-      { password: hashedPassword },
+      { password: newPassword },
       { new: true } // This option ensures that the updated document is returned
     );
 
