@@ -1,20 +1,17 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { fetchDataFromApi } from "./utils/api";
-
 import { useSelector, useDispatch } from "react-redux";
+import { fetchDataFromApi } from "./utils/api";
 import { getApiConfiguration, getGenres } from "./store/homeSlice";
 
-// import Header from "./components/header/Header";
-// import Footer from "./components/mainPage/footer/Footer";
-import LandingPage from "./pages/landingPage/signUp"
-import LoginPage from "./pages/login/Login"
+import LandingPage from "./pages/landingPage/signUp";
+import LoginPage from "./pages/login/Login";
 import Home from "./pages/home/Home";
 import Details from "./pages/details/Details";
 import SearchResult from "./pages/searchResult/SearchResult";
 import Explore from "./pages/explore/Explore";
-import Discussion from "./pages/discussionPage/discussionPage"
-// import PageNotFound from "./components/";
+import Discussion from "./pages/discussionPage/discussionPage";
+import PageNotFound from "./pages/404/PageNotFound";
 
 function App() {
   const dispatch = useDispatch();
@@ -60,7 +57,6 @@ function App() {
 
   return (
     <BrowserRouter>
-      {/* <Header /> */}
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/" element={<LandingPage />} />
@@ -69,9 +65,8 @@ function App() {
         <Route path="/:mediaType/:id/discussion" element={<Discussion />} />
         <Route path="/search/:query" element={<SearchResult />} />
         <Route path="/explore/:mediaType" element={<Explore />} />
-        {/* <Route path="*" element={<PageNotFound />} /> */}
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
-      {/* <Footer /> */}
     </BrowserRouter>
   );
 }

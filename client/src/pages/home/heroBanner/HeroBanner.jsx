@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import "./style.scss";
-import ToastNotification from "../../../components/ToasterNotification/ToastNotification";
-
 import useFetch from "../../../hooks/userFetch";
+import "./style.scss";
 
-// import Img from "../../../components/lazyLoadImage/Img";
+import ToastNotification from "../../../components/ToasterNotification/ToastNotification";
 import ContentWrapper from "../../../components/contentWrapper/ContentWrapper";
-import BubbleBg from "../../../components/bubbleGradientBg/BubbleBg"
+import BubbleBg from "../../../components/bubbleGradientBg/BubbleBg";
 
 const HeroBanner = () => {
   const [background, setBackground] = useState("");
@@ -30,15 +28,15 @@ const HeroBanner = () => {
     }
   };
 
+  const handleSearch = () => {
+    if (query.length > 0) {
+      navigate(`/search/${query}`);
+    }
+  };
+
   return (
     <div className="heroBanner">
-      {/* {!loading && (
-        <div className="backdrop-img">
-          <Img src={background} />
-        </div>
-      )} */}
       <BubbleBg />
-
       <div className="opacity-layer"></div>
       <ToastNotification />
       <ContentWrapper>
@@ -51,10 +49,11 @@ const HeroBanner = () => {
             <input
               type="text"
               placeholder="Search for a movie or tv show...."
+              value={query}
               onChange={(e) => setQuery(e.target.value)}
               onKeyUp={searchQueryHandler}
             />
-            <button>Search</button>
+            <button onClick={handleSearch}>Search</button>
           </div>
         </div>
       </ContentWrapper>

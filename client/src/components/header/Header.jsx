@@ -62,7 +62,7 @@ const Header = () => {
       }, 1000);
     }
   };
-
+  
   const openSearch = () => {
     setMobileMenu(false);
     setShowSearch(true);
@@ -95,9 +95,9 @@ const Header = () => {
           <li className="menuItem" onClick={() => navigationHandler("tv")}>
             TV Shows
           </li>
-          <li className="menuItem" onClick={() => navigate("/mylist")}>
+          {/* <li className="menuItem" onClick={() => navigate("/mylist")}>
             My List
-          </li>
+          </li> */}
           <li className="menuItem" onClick={signOutAndRedirect}>
             Logout
           </li>

@@ -11,6 +11,10 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  @media screen and (max-width: 430px){
+    padding: 15px 0;
+    border-radius: 20px;
+  }
 
   .comments-section {
     color: white;
@@ -51,6 +55,9 @@
       float: right;
       transition: all 0.2s ease;
       margin-bottom: 15px;
+      @media screen and (max-width: 430px){
+        font-size: 20px;
+      }
 
       &:hover {
         color: #fd4;
@@ -96,10 +103,16 @@
         outline: none;
         color: #eee;
         border: 1px solid #333;
+        border-radius: 5px;
         background: #222;
         padding: 10px;
         font-size: 17px;
         resize: none;
+        @media screen and (max-width: 430px){
+          padding: 15px;
+          font-size: 12px;
+          border-radius: 15px;
+        }
 
         &:focus {
           border-color: #444;
@@ -124,6 +137,10 @@
         text-transform: uppercase;
         cursor: pointer;
         transition: all 0.3s ease;
+        border-radius: 20px;
+        @media screen and (max-width: 430px){
+          font-size: 16px;
+        }
 
         &:hover {
           background: #1b1b1b;
@@ -142,9 +159,15 @@
   .comments {
     display: grid;
     gap: 2rem;
+    @media screen and (max-width: 430px){
+      gap: 15px;
+    }
 
     h2 {
       color: #ffffff;
+      @media screen and (max-width: 430px){
+        font-size: large;
+      }
     }
 
     .card {
@@ -156,6 +179,12 @@
       border-radius: 5px;
       box-shadow: 5px 5px 20px rgba(255, 255, 255, 0.2);
       cursor: pointer;
+      @media screen and (max-width: 430px){
+        padding: 1rem;
+        gap: 0;
+        border-radius: 15px;
+      }
+
 
       img {
         max-width: 75px;
