@@ -12,6 +12,7 @@ import SearchResult from "./pages/searchResult/SearchResult";
 import Explore from "./pages/explore/Explore";
 import Discussion from "./pages/discussionPage/discussionPage";
 import PageNotFound from "./pages/404/PageNotFound";
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const dispatch = useDispatch();

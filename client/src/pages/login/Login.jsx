@@ -72,16 +72,16 @@ function Login() {
               <input type="checkbox" id="remember-me" />
               <label htmlFor="remember-me">Remember me</label>
             </div>
-            <a href="localhost:5000/#">Need help?</a>
+            <a href="https://cinemorph.vercel.app/">Need help?</a>
           </div>
         </div>
         <p>
-          New to Netflix? <a href="localhost:5000/#">Sign up now</a>
+          New to Cinemorph? <a href="https://cinemorph.vercel.app/">Sign up now</a>
         </p>
         <small>
           This page is protected by Google reCAPTCHA to ensure you're not a
           bot.&nbsp;&nbsp;
-          <a href="localhost:5000/#">Learn more.</a>
+          <a href="https://cinemorph.vercel.app/">Learn more.</a>
         </small>
       </div>
     </div>

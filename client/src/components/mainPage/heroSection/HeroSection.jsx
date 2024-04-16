@@ -7,13 +7,17 @@ import {
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { firebaseAuth, firebaseDatabase } from "../../../utils/firebase-config";
-import { getDatabase, ref, set } from 'firebase/database';
+import { getDatabase, ref, set } from "firebase/database";
 import mainlogo from "../../../assets/logo.svg";
 
 function HeroSection(props) {
   const [showPassword, setShowPassword] = useState(false);
-  const [formValues, setFormValues] = useState({ email: "", password: "", name: ""});
-  
+  const [formValues, setFormValues] = useState({
+    email: "",
+    password: "",
+    name: "",
+  });
+
   const navigate = useNavigate();
 
   const handleSignIn = async () => {
@@ -30,13 +34,22 @@ function HeroSection(props) {
       await set(userRef, {
         email,
         Name: name,
-        login_time: Date.now()
+        login_time: Date.now(),
       });
 
       // Redirect to Home page after signup
       navigate("/Home");
     } catch (error) {
-      console.log(error);
+      // Check if the error is due to an existing email
+      if (error.code === "auth/email-already-in-use") {
+        // Show a notification to the user
+        alert(
+          "This email is already in use. Please use a different email address."
+        );
+      } else {
+        // Log any other errors to the console
+        console.log(error);
+      }
     }
   };
 
@@ -88,31 +101,31 @@ function HeroSection(props) {
             />
             {showPassword && (
               <>
-              <input
-                type="text"
-                placeholder="Enter your name"
-                onChange={(e) =>
-                  setFormValues({
-                    ...formValues,
-                    [e.target.name]: e.target.value,
-                  })
-                }
-                name="name"
-                value={formValues.name}
-              />
-              <input
-                type="password"
-                placeholder="Password"
-                onChange={(e) =>
-                  setFormValues({
-                    ...formValues,
-                    [e.target.name]: e.target.value,
-                  })
-                }
-                name="password"
-                value={formValues.password}
-              />
-            </>
+                <input
+                  type="text"
+                  placeholder="Enter your name"
+                  onChange={(e) =>
+                    setFormValues({
+                      ...formValues,
+                      [e.target.name]: e.target.value,
+                    })
+                  }
+                  name="name"
+                  value={formValues.name}
+                />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  onChange={(e) =>
+                    setFormValues({
+                      ...formValues,
+                      [e.target.name]: e.target.value,
+                    })
+                  }
+                  name="password"
+                  value={formValues.password}
+                />
+              </>
             )}
             {!showPassword && (
               <button
