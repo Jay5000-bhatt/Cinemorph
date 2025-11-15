@@ -1,27 +1,27 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
-// const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const User = require('../models/Users');
 
-const {
-  signUp,
-  login,
-  changePassword,
-  generateOtp,
-  verifyOtp,
-  updateProfile,
-  createPayment,
-} = require("../controllers/UserController");
+import jwt from "jsonwebtoken";
+import User from "../models/Users.js";
 
-const { authenticate } = require("../middleware/auth");
+import {
+	signUp,
+	login,
+	changePassword,
+	generateOtp,
+	verifyOtp,
+	updateProfile,
+	createPayment,
+} from "../controllers/UserController.js";
 
-router.post("/signup", signUp); // Work Properly
-router.post("/login", login);  // Work Properly
-router.put("/change", authenticate, changePassword); // Work Properly
-router.post("/generate-otp", authenticate, generateOtp); // Work Properly
-router.post("/verify-otp", authenticate, verifyOtp); // Work Properly
-router.put("/update", authenticate, updateProfile); // Work Properly
-router.post("/payment", authenticate, createPayment); //Work Properly
+import { authenticate } from "../middleware/auth.js";
 
-module.exports = router;
+router.post("/signup", signUp);
+router.post("/login", login);
+router.put("/change", authenticate, changePassword);
+router.post("/generate-otp", authenticate, generateOtp);
+router.post("/verify-otp", authenticate, verifyOtp);
+router.put("/update", authenticate, updateProfile);
+router.post("/payment", authenticate, createPayment);
+
+export default router;

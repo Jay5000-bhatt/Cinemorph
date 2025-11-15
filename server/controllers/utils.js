@@ -1,44 +1,35 @@
-const nodemailer = require("nodemailer");
+import nodemailer from "nodemailer";
 
-function generateMail(to, subject, body) {
-  return new Promise((resolve, reject) => {
-    const email = "bhattjay114@gmail.com";
+export const generateMail = (to, subject, body) => {
+	return new Promise((resolve, reject) => {
+		const email = "bhattjay114@gmail.com";
 
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: email,
-        pass: "ielo mlqj ircy crmw",
-      },
-    });
+		const transporter = nodemailer.createTransport({
+			service: "gmail",
+			auth: {
+				user: email,
+				pass: "ielo mlqj ircy crmw",
+			},
+		});
 
-    const mailOptions = {
-      from: email,
-      to: "bhattjay404@gmail.com",
-      subject : "Change Password",
-      html: body,
-    };
+		const mailOptions = {
+			from: email,
+			to: "bhattjay404@gmail.com",
+			subject: subject,
+			html: body,
+		};
 
-    transporter.sendMail(mailOptions, (err, info) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve("Email sent to: " + to + " successfully.");
-      }
-    });
-  });
-}
+		transporter.sendMail(mailOptions, (err) => {
+			if (err) reject(err);
+			else resolve("Email sent to: " + to + " successfully.");
+		});
+	});
+};
 
-function successResponse(res, data, statusCode = 200) {
-  return res.status(statusCode).json(data);
-}
+export const successResponse = (res, data, statusCode = 200) => {
+	return res.status(statusCode).json(data);
+};
 
-function failureResponse(res, error, statusCode = 500) {
-  return res.status(statusCode).json(error);
-}
-
-module.exports = {
-  generateMail,
-  successResponse,
-  failureResponse,
+export const failureResponse = (res, error, statusCode = 500) => {
+	return res.status(statusCode).json(error);
 };

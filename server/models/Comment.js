@@ -1,24 +1,24 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const commentSchema = new mongoose.Schema({
-  tmdbId: {
-    type: Number, // Assuming TMDB ID is a number
-    required: true
-  },
-  userId: {
-    type: String, // Assuming user ID is a string
-    required: true
-  },
-  comment: {
-    type: String,
-    required: true,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
+	tmdbId: {
+		type: Number,
+		required: true
+	},
+	userId: {
+		type: String,
+		required: true
+	},
+	comment: {
+		type: String,
+		required: true,
+	},
+	createdAt: {
+		type: Date,
+		default: Date.now,
+	},
 });
 
 const Comment = mongoose.model("Comment", commentSchema);
 
-module.exports = Comment;
+export default Comment;

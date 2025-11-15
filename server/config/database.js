@@ -1,13 +1,8 @@
-const mongoose = require("mongoose");
-require("dotenv").config();
+import dotenv from "dotenv";
+dotenv.config({ quiet: true });
 
-const url = `mongodb+srv://Jay_Bhatt2201:R6BZ5BkOH5qz1rMl@server.tratjqt.mongodb.net/`;
+import mongoose from "mongoose";
 
-const dbName = "Cinemorph";
+const connect = mongoose.connect(`${process.env.DB_URL}${process.env.DB_NAME}`);
 
-const connect = mongoose.connect(url + dbName, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
-module.exports = connect;
+export default connect;
